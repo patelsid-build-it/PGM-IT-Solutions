@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PJM IT-Solutions | Projekt-Zentrale</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="app-header">
+      <div class="container header-container">
+        <a href="#" class="brand" id="btn-brand">
+          <!-- Refined, Sleek Corporate Logo -->
+          <svg class="brand-logo-svg" viewBox="0 0 250 55" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="logo-glow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur stdDeviation="2" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <!-- Left circuit nodes for the 'p' -->
+            <g filter="url(#logo-glow)">
+              <circle cx="16" cy="25" r="3" fill="#00F2FE" />
+              <path d="M 16 25 L 35 25" stroke="#00F2FE" stroke-width="2" />
+              
+              <circle cx="24" cy="15" r="3" fill="#00F2FE" />
+              <path d="M 24 15 L 40 15" stroke="#00F2FE" stroke-width="2" />
+              
+              <circle cx="24" cy="35" r="3" fill="#00F2FE" />
+              <path d="M 24 35 L 40 35" stroke="#00F2FE" stroke-width="2" />
+            </g>
+
+            <!-- Stylized lowercase pjm using clean geometric stroke paths -->
+            <!-- p -->
+            <path d="M 45 42 L 45 18 C 45 13, 58 13, 58 22 C 58 31, 45 31, 45 31" fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
+            <!-- j -->
+            <path d="M 70 18 L 70 42 C 70 47, 65 52, 56 52" fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="70" cy="9" r="3" fill="#FFFFFF" />
+            <!-- m -->
+            <path d="M 82 42 L 82 18 C 82 13, 93 13, 93 22 L 93 42 M 93 18 C 93 13, 104 13, 104 22 L 104 42" fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
+            
+            <!-- IT-Solutions GmbH -->
+            <text x="44" y="49" fill="#F8FAFC" font-family="'Outfit', sans-serif" font-size="8.5" font-weight="700" letter-spacing="0.4">IT-Solutions GmbH</text>
+          </svg>
+        </a>
+        
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+          <button class="nav-link active" id="nav-home" data-translate="nav_home">Startseite</button>
+          <button class="nav-link" id="nav-project" data-translate="nav_project">Projekt-Zentrale</button>
+          
+          <!-- Bilingual Language Switcher -->
+          <div class="lang-switch de" id="lang-toggle" role="button" aria-label="Sprache wechseln / Switch Language">
+            <div class="lang-switch-toggle"></div>
+            <div class="lang-label">
+              <span class="de-label">DE</span>
+              <span class="en-label">EN</span>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container" style="min-height: 70vh;">
+      
+      <!-- ================= STARTSEITE ================= -->
+      <section class="page-section active" id="section-home">
+        <!-- Hero Section -->
+        <div class="hero-section">
+          <div class="hero-text">
+            <div class="badge">
+              <span class="pulse-dot" style="width: 8px; height: 8px; background-color: var(--color-primary); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--color-primary);"></span>
+              <span data-translate="hero_badge">Projektarbeit</span>
+            </div>
+            <h1 data-translate="hero_title">Einrichtung eines Arbeitsplatzes</h1>
+            <p data-translate="hero_desc">
+              Willkommen im Projekt-Portal der PJM IT-Solutions GmbH. Unser 5-köpfiges Team richtet einen modernen, ergonomischen und energieeffizienten Arbeitsplatz für einen Kunden ein. Dieses Portal dokumentiert unsere Fortschritte für unsere Dozentin Frau Petra.
+            </p>
+            <button class="cta-button" id="btn-enter-hub">
+              <span data-translate="btn_enter_hub">Projekt-Zentrale betreten</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+          
+          <!-- Glow Stats Visualizer -->
+          <div class="glass-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; padding: 3rem 2rem;">
+            <!-- Circular Progress SVG -->
+            <svg width="180" height="180" viewBox="0 0 100 100" style="transform: rotate(-90deg); filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.3));">
+              <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="transparent" />
+              <circle cx="50" cy="50" r="40" stroke="url(#progress-grad)" stroke-width="8" fill="transparent" 
+                      stroke-dasharray="251.2" stroke-dashoffset="87.9" id="home-progress-circle" style="transition: stroke-dashoffset 1s ease-in-out;" />
+              <defs>
+                <linearGradient id="progress-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00F2FE" />
+                  <stop offset="100%" stop-color="#4FACFE" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div style="position: absolute; text-align: center;">
+              <span style="font-size: 2.5rem; font-family: var(--font-heading); font-weight: 800; color: #fff;" id="home-progress-percentage">65%</span>
+              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;" data-translate="total_progress">Fortschritt</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="glass-card stat-card">
+            <div class="stat-val" id="stat-team-size">5</div>
+            <div class="stat-lbl" data-translate="stat_team">Team-Mitglieder</div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-val" id="stat-phases-done">4 / 6</div>
+            <div class="stat-lbl" data-translate="stat_phases">Phasen Erledigt</div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-val" id="stat-questions-count">24</div>
+            <div class="stat-lbl" data-translate="stat_questions">Fragen Beantwortet</div>
+          </div>
+        </div>
+
+        <!-- Project Overview Cards -->
+        <h2 class="margin-bottom-md text-gradient" data-translate="overview_title" style="font-size: 2.25rem;">Über das Projekt</h2>
+        <div class="project-overview-grid">
+          <div class="glass-card">
+            <h3 class="margin-bottom-sm text-gradient" data-translate="overview_card1_title">Der Projektauftrag</h3>
+            <p data-translate="overview_card1_desc" style="font-size: 0.95rem; color: var(--text-muted);">
+              Die Einrichtung eines IT-Arbeitsplatzes nach Kundenwunsch. Dies umfasst die Bedarfsanalyse, kaufmännische Kalkulationen auf Basis des Betriebsabrechnungsbogens (BAB), Angebotserstellung mit einem Gewinnzuschlag von 18 %, Erstellung von Lasten- und Pflichtenheften, rechtssicheren Kaufverträgen sowie die physische Installation unter Berücksichtigung von Ergonomie und Arbeitssicherheit.
+            </p>
+          </div>
+          <div class="glass-card">
+            <h3 class="margin-bottom-sm text-gradient" data-translate="overview_card2_title">Die Methode: Vollständige Handlung</h3>
+            <p data-translate="overview_card2_desc" style="font-size: 0.95rem; color: var(--text-muted);">
+              Wir strukturieren das Projekt nach dem didaktischen Modell der vollständigen Handlung. Dies garantiert eine systematische Bearbeitung in 6 Phasen: Informieren, Planen, Entscheiden, Ausführen, Kontrollieren und Bewerten. In der Projekt-Zentrale können Sie den Fortschritt jeder einzelnen Phase live verfolgen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PROJEKT-ZENTRALE ================= -->
+      <section class="page-section" id="section-project">
+        <div class="workspace-wrapper">
+          <!-- Sidebar tabs -->
+          <aside class="workspace-sidebar">
+            <div class="sidebar-title" data-translate="sidebar_title">Projekt-Zentrale</div>
+            <button class="workspace-tab-btn active" id="tab-status" data-tab="pane-status">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span data-translate="tab_status">Projekt-Status</span>
+            </button>
+            <button class="workspace-tab-btn" id="tab-team" data-tab="pane-team">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              <span data-translate="tab_team">Team-Organigramm</span>
+            </button>
+            <button class="workspace-tab-btn" id="tab-faq" data-tab="pane-faq">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              <span data-translate="tab_faq">Fragenkatalog</span>
+            </button>
+            <button class="workspace-tab-btn" id="tab-nwa" data-tab="pane-nwa">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              <span data-translate="tab_nwa">Nutzwertanalyse</span>
+            </button>
+            <button class="workspace-tab-btn" id="tab-bab" data-tab="pane-bab">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><line x1="16" y1="8" x2="8" y2="16"></line><line x1="8" y1="8" x2="16" y2="16"></line></svg>
+              <span data-translate="tab_bab">BAB-Rechner</span>
+            </button>
+          </aside>
+
+          <!-- Workspace content panes -->
+          <div class="glass-card" style="padding: 2rem;">
+            
+            <!-- 1. PROJEKT-STATUS timeline -->
+            <div class="workspace-content-pane active" id="pane-status">
+              <h2 class="margin-bottom-md text-gradient" data-translate="pane_status_title">Phasenfortschritt (Vollständige Handlung)</h2>
+              <div class="timeline" id="timeline-container">
+                <!-- Phases injected by main.js -->
+              </div>
+            </div>
+
+            <!-- 2. TEAM-ORGANIGRAMM -->
+            <div class="workspace-content-pane" id="pane-team">
+              <div class="flex-between margin-bottom-sm" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <h2 class="text-gradient" data-translate="pane_team_title" style="margin-bottom: 0;">Organigramm</h2>
+                <button class="faq-filter-btn" id="btn-export-org-pdf" style="background: rgba(0, 242, 254, 0.08); border-color: rgba(0, 242, 254, 0.25); color: var(--color-primary); display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>PDF</span>
+                </button>
+              </div>
+              <p class="margin-bottom-lg" data-translate="pane_team_desc" style="color: var(--text-muted); font-size: 0.95rem;">
+                Unser 5-köpfiges Team der PJM IT-Solutions GmbH arbeitet dezentral im Homeoffice in ganz Deutschland. Hier sehen Sie unsere Rollenverteilung und Zuständigkeiten für das Projekt.
+              </p>
+              <div class="organigram-container" id="organigram-container">
+                <!-- Org levels injected by main.js -->
+              </div>
+            </div>
+
+            <!-- 3. FRAGENKATALOG -->
+            <div class="workspace-content-pane" id="pane-faq">
+              <h2 class="margin-bottom-sm text-gradient" data-translate="pane_faq_title">Projekt-Fragenkatalog</h2>
+              <p class="margin-bottom-md" data-translate="pane_faq_desc" style="color: var(--text-muted); font-size: 0.95rem;">
+                Ein systematischer Katalog aller relevanten kaufmännischen, technischen, logistischen und organisatorischen Fragen zur Projektdurchführung. Sie können Fragen durchsuchen, filtern, ihren Bearbeitungsstatus ändern und sogar neue Fragen hinzufügen.
+              </p>
+              
+              <!-- Search and Filter Controls -->
+              <div class="faq-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; width: 100%;">
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; flex: 1;">
+                  <input type="text" class="faq-search-input" id="faq-search" placeholder="Fragen durchsuchen..." data-translate-placeholder="faq_search_placeholder">
+                  <button class="faq-filter-btn active" data-filter="all" data-translate="filter_all">Alle</button>
+                  <button class="faq-filter-btn" data-filter="1" data-translate="filter_cat1">Umfang</button>
+                  <button class="faq-filter-btn" data-filter="2" data-translate="filter_cat2">Infrastruktur</button>
+                  <button class="faq-filter-btn" data-filter="3" data-translate="filter_cat3">Logistik & Montage</button>
+                  <button class="faq-filter-btn" data-filter="4" data-translate="filter_cat4">Kaufmännisch</button>
+                  <button class="faq-filter-btn" data-filter="5" data-translate="filter_cat5">Übergreifend</button>
+                </div>
+                <button class="faq-filter-btn" id="btn-export-faq-pdf" style="background: rgba(0, 242, 254, 0.08); border-color: rgba(0, 242, 254, 0.25); color: var(--color-primary); display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.25rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>PDF</span>
+                </button>
+              </div>
+
+              <!-- FAQ accordion container -->
+              <div class="faq-list" id="faq-list-container">
+                <!-- Collapsible details panels injected by main.js -->
+              </div>
+
+              <!-- Add New Question Form -->
+              <div class="glass-card add-question-card">
+                <h3 class="margin-bottom-md text-gradient" data-translate="add_q_title">Neue Frage hinzufügen</h3>
+                <form id="add-question-form">
+                  <div class="form-group">
+                    <label for="new-q-cat" data-translate="add_q_cat">Kategorie</label>
+                    <select id="new-q-cat" required>
+                      <option value="1" data-translate="cat_option_1">1. Projektumfang & Zielsetzung</option>
+                      <option value="2" data-translate="cat_option_2">2. IT-Infrastruktur & Ergonomie</option>
+                      <option value="3" data-translate="cat_option_3">3. Logistik, Montage & Rollout</option>
+                      <option value="4" data-translate="cat_option_4">4. Kaufmännische Abwicklung & Buchhaltung</option>
+                      <option value="5" data-translate="cat_option_5">5. Übergreifende Aspekte (Nachhaltigkeit, Datenschutz, Arbeitssicherheit)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-q-text" data-translate="add_q_question">Frage</label>
+                    <input type="text" id="new-q-text" required placeholder="Geben Sie hier die Frage ein..." data-translate-placeholder="add_q_text_placeholder">
+                  </div>
+                  <div class="form-group">
+                    <label for="new-q-ans" data-translate="add_q_answer">Antwort</label>
+                    <textarea id="new-q-ans" required placeholder="Geben Sie hier die ausführliche Antwort ein..." data-translate-placeholder="add_q_ans_placeholder"></textarea>
+                  </div>
+                  <button type="submit" class="cta-button" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;" id="btn-add-q">
+                    <span data-translate="btn_add_question">Frage speichern</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- 4. NUTZWERTANALYSE -->
+            <div class="workspace-content-pane" id="pane-nwa">
+              <h2 class="margin-bottom-sm text-gradient" data-translate="pane_nwa_title">Nutzwertanalyse für Arbeitsplatz-Ausstattung</h2>
+              <p class="margin-bottom-md" data-translate="pane_nwa_desc" style="color: var(--text-muted); font-size: 0.95rem;">
+                Vergleichende Nutzwertanalyse zur Auswahl der optimalen Hardware-Ausstattung für den Homeoffice-Arbeitsplatz. Passen Sie die Gewichtungen (%) und die Bewertungen (1-10) der Kriterien an, um das Ergebnis live neu zu berechnen.
+              </p>
+              
+              <div class="nwa-table-wrapper">
+                <table class="nwa-table">
+                  <thead>
+                    <tr>
+                      <th data-translate="nwa_th_criterion">Bewertungskriterium</th>
+                      <th data-translate="nwa_th_weight" style="width: 100px; text-align: center;">Gewichtung</th>
+                      <th data-translate="nwa_th_opt1">Standard Homeoffice</th>
+                      <th data-translate="nwa_th_opt2">Power Developer</th>
+                      <th data-translate="nwa_th_opt3">Thin Client Eco</th>
+                    </tr>
+                  </thead>
+                  <tbody id="nwa-rows-container">
+                    <!-- Dynamic criterion rows injected by main.js -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Recommendation output card -->
+              <div class="nwa-winner-alert" id="nwa-winner-card">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div>
+                  <strong data-translate="nwa_recommendation_label">Empfehlung:</strong>
+                  <span id="nwa-recommendation-text">Lädt...</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. BAB-RECHNER -->
+            <div class="workspace-content-pane" id="pane-bab">
+              <h2 class="margin-bottom-sm text-gradient" data-translate="pane_bab_title">Betriebsabrechnungsbogen & Angebotskalkulation</h2>
+              <p class="margin-bottom-md" data-translate="pane_bab_desc" style="color: var(--text-muted); font-size: 0.95rem;">
+                Das kaufmännische Herzstück des Projekts. Berechnen Sie die Zuschlagssätze für Material, Fertigung, Verwaltung und Vertrieb auf Basis der Gemeinkosten und ermitteln Sie den Angebotspreis mit 18 % Gewinnzuschlag.
+              </p>
+              
+              <div class="bab-grid">
+                <!-- Left Column: BAB Overhead Rates -->
+                <div class="glass-card bab-card" style="padding: 1.5rem; background: rgba(6, 9, 19, 0.4);">
+                  <h3 class="margin-bottom-sm text-gradient" data-translate="bab_table_title">Zuschlagsermittlung (BAB)</h3>
+                  <table class="bab-table">
+                    <thead>
+                      <tr>
+                        <th data-translate="bab_th_cost">Kostenstelle</th>
+                        <th data-translate="bab_th_base">Einzelkosten (€)</th>
+                        <th data-translate="bab_th_overhead">Gemeinkosten (€)</th>
+                        <th data-translate="bab_th_rate">Zuschlagsatz</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td data-translate="bab_cell_material">Materialbereich</td>
+                        <td id="bab-mat-base">450.000,00</td>
+                        <td><input type="number" class="bab-input" id="bab-mat-overhead" value="65970"></td>
+                        <td><span class="bab-percent-badge" id="bab-mat-rate">14,7%</span></td>
+                      </tr>
+                      <tr>
+                        <td data-translate="bab_cell_production">Fertigungsbereich</td>
+                        <td id="bab-prod-base">250.000,00</td>
+                        <td><input type="number" class="bab-input" id="bab-prod-overhead" value="208450"></td>
+                        <td><span class="bab-percent-badge" id="bab-prod-rate">83,4%</span></td>
+                      </tr>
+                      <tr>
+                        <td data-translate="bab_cell_admin">Verwaltung</td>
+                        <td class="bab-total-cell" id="bab-admin-base">999.420,00</td>
+                        <td><input type="number" class="bab-input" id="bab-admin-overhead" value="87990"></td>
+                        <td><span class="bab-percent-badge" id="bab-admin-rate">8,8%</span></td>
+                      </tr>
+                      <tr>
+                        <td data-translate="bab_cell_sales">Vertrieb</td>
+                        <td class="bab-total-cell" id="bab-sales-base">999.420,00</td>
+                        <td><input type="number" class="bab-input" id="bab-sales-overhead" value="174590"></td>
+                        <td><span class="bab-percent-badge" id="bab-sales-rate">17,5%</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);" data-translate="bab_note">
+                    * Die Berechnung der Herstellkosten des Umsatzes (als Zuschlagsgrundlage für Verwaltung & Vertrieb) erfolgt automatisch inklusive Bestandsveränderungen (+25.000 €).
+                  </div>
+                </div>
+
+                <!-- Right Column: Offer Calculator -->
+                <div class="glass-card bab-card" style="padding: 1.5rem; background: rgba(6, 9, 19, 0.4);">
+                  <h3 class="margin-bottom-sm text-gradient" data-translate="bab_calc_title">Angebotskalkulator</h3>
+                  
+                  <div class="form-group" style="margin-bottom: 0.75rem;">
+                    <label for="calc-mat" data-translate="calc_label_mat">Material-Einzelkosten (€)</label>
+                    <input type="number" id="calc-mat" value="1200" style="padding: 0.5rem;">
+                  </div>
+                  <div class="form-group" style="margin-bottom: 1rem;">
+                    <label for="calc-labor" data-translate="calc_label_labor">Fertigungslohn (€)</label>
+                    <input type="number" id="calc-labor" value="450" style="padding: 0.5rem;">
+                  </div>
+
+                  <div class="calc-result-box">
+                    <div class="calc-row">
+                      <span data-translate="calc_mat_sum">Materialkosten (inkl. Zuschlag)</span>
+                      <span id="res-mat-total">1.376,40 €</span>
+                    </div>
+                    <div class="calc-row">
+                      <span data-translate="calc_labor_sum">Fertigungskosten (inkl. Zuschlag)</span>
+                      <span id="res-labor-total">825,30 €</span>
+                    </div>
+                    <div class="calc-row accent">
+                      <span data-translate="calc_hk">Herstellkosten (HK)</span>
+                      <span id="res-hk">2.201,70 €</span>
+                    </div>
+                    <div class="calc-row">
+                      <span data-translate="calc_admin_sales">Verw. & Vertr. Gemeinkosten</span>
+                      <span id="res-overhead">579,05 €</span>
+                    </div>
+                    <div class="calc-row accent">
+                      <span data-translate="calc_sk">Selbstkosten (SK)</span>
+                      <span id="res-sk">2.780,75 €</span>
+                    </div>
+                    <div class="calc-row">
+                      <span data-translate="calc_gewinn">Gewinnzuschlag (18 %)</span>
+                      <span id="res-profit">500,53 €</span>
+                    </div>
+                    <div class="calc-row">
+                      <span data-translate="calc_netto" style="font-weight: 800; font-size: 1.15rem; color:#fff;">Netto-Verkaufspreis</span>
+                      <span id="res-netto">3.281,28 €</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="container" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+        <p style="margin: 0;">&copy; 2026 PJM IT-Solutions GmbH. <span data-translate="footer_text">Projekt-Portal.</span></p>
+        <span style="color: var(--text-muted);">|</span>
+        <button id="btn-reset-data" style="background: none; border: none; color: var(--color-danger); cursor: pointer; font-family: var(--font-body); font-size: 0.9rem; text-decoration: underline; padding: 0;" data-translate="reset_data">Daten zurücksetzen</button>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
