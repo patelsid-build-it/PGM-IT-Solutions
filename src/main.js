@@ -774,11 +774,11 @@ function renderOrganigram() {
   container.innerHTML = '';
 
   const team = [
-    { name: 'Joshlyn', roleKey: 'role_pm', detailsKey: 'role_pm_details', level: 1, initials: 'JO' },
-    { name: 'Murat', roleKey: 'role_controller', detailsKey: 'role_controller_details', level: 2, initials: 'MU' },
-    { name: 'Siddharth', roleKey: 'role_engineer', detailsKey: 'role_engineer_details', level: 3, initials: 'SI' },
-    { name: 'Maiky', roleKey: 'role_engineer', detailsKey: 'role_engineer_details', level: 3, initials: 'MA' },
-    { name: 'Pascal', roleKey: 'role_logistics', detailsKey: 'role_logistics_details', level: 2, initials: 'PA' }
+    { name: 'Joshlyn', roleKey: 'role_pm', detailsKey: 'role_pm_details', level: 1, initials: 'JO', image: '/images/joshlyn.jpg' },
+    { name: 'Murat', roleKey: 'role_controller', detailsKey: 'role_controller_details', level: 2, initials: 'MU', image: '/images/murat.jpg' },
+    { name: 'Siddharth', roleKey: 'role_engineer', detailsKey: 'role_engineer_details', level: 3, initials: 'SI', image: '/images/siddharth.jpg' },
+    { name: 'Maiky', roleKey: 'role_engineer', detailsKey: 'role_engineer_details', level: 3, initials: 'MA', image: '/images/maiky.jpg' },
+    { name: 'Pascal', roleKey: 'role_logistics', detailsKey: 'role_logistics_details', level: 2, initials: 'PA', image: '/images/pascal.jpg' }
   ];
 
   // Organize by levels
@@ -805,7 +805,9 @@ function renderOrganigram() {
       const roleDetails = dict[member.detailsKey];
 
       card.innerHTML = `
-        <div class="avatar-placeholder">${member.initials}</div>
+        <div class="avatar-container">
+          <img src="${member.image}" alt="${member.name}" class="avatar-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;avatar-placeholder&quot; style=&quot;margin:0;&quot;>${member.initials}</div>'">
+        </div>
         <h4 class="member-name">${member.name}</h4>
         <div class="member-role">${roleName}</div>
         <div class="member-details">
