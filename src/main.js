@@ -308,16 +308,72 @@ const defaultQuestions = [
   }
 ];
 
-// Initial Nutzwertanalyse Data
-const defaultNwa = {
-  criteria: [
-    { id: 'crit-price', nameDe: 'Anschaffungspreis (Price)', nameEn: 'Purchase Price', weight: 30, val1: 8, val2: 4, val3: 9 },
-    { id: 'crit-perf', nameDe: 'Rechenleistung (Performance)', nameEn: 'Compute Performance', weight: 25, val1: 7, val2: 10, val3: 4 },
-    { id: 'crit-ergo', nameDe: 'Ergonomie & Flexibilität (Ergonomics)', nameEn: 'Ergonomics & Flexibility', weight: 20, val1: 6, val2: 9, val3: 5 },
-    { id: 'crit-eco', nameDe: 'Energieeffizienz & Eco (Sustainability)', nameEn: 'Energy Efficiency & Eco', weight: 15, val1: 7, val2: 5, val3: 10 },
-    { id: 'crit-time', nameDe: 'Lieferzeit & Verfügbarkeit (Delivery)', nameEn: 'Delivery Time & Availability', weight: 10, val1: 9, val2: 7, val3: 8 }
-  ]
-};
+// Initial Nutzwertanalyse Data for 3 Device Categories
+const defaultNwaCategories = [
+  {
+    id: 'nwa-switches',
+    titleDe: '1. Nutzwertanalyse: 48-Port PoE+ Switches',
+    titleEn: '1. Utility Analysis: 48-Port PoE+ Switches',
+    options: [
+      { id: 'opt-a', labelDe: 'Option A', labelEn: 'Option A', name: 'Netgear GS752TP-200AJS', desc: 'Managed, 380W PoE, 4x SFP' },
+      { id: 'opt-b', labelDe: 'Option B', labelEn: 'Option B', name: 'Ubiquiti UniFi USW-48-PoE', desc: 'Managed, 195W PoE, 4x SFP, sehr sparsam' },
+      { id: 'opt-c', labelDe: 'Option C', labelEn: 'Option C', name: 'Cisco Business CBS350-48P-4G', desc: 'Enterprise Managed, 370W PoE, 4x SFP' },
+      { id: 'opt-d', labelDe: 'Option D', labelEn: 'Option D', name: 'D-Link DGS-1210-52MP', desc: 'Smart Managed, 370W PoE, 4x SFP' }
+    ],
+    criteria: [
+      { id: 'c1', nameDe: 'Preis (Anschaffung)', nameEn: 'Price (Procurement)', weight: 20, valA: 4, valB: 3, valC: 2, valD: 5 },
+      { id: 'c2', nameDe: 'Leistung (Feature-Set & PoE-Budget)', nameEn: 'Performance (Features & PoE Budget)', weight: 25, valA: 4, valB: 3, valC: 5, valD: 4 },
+      { id: 'c3', nameDe: 'Energieverbrauch (Effizienz im Idle/Last)', nameEn: 'Energy Consumption (Idle/Load Efficiency)', weight: 15, valA: 4, valB: 5, valC: 3, valD: 3 },
+      { id: 'c4', nameDe: 'Nachhaltigkeit (Lebensdauer/Eco-Mode)', nameEn: 'Sustainability (Lifespan/Eco Mode)', weight: 20, valA: 4, valB: 4, valC: 4, valD: 3 },
+      { id: 'c5', nameDe: 'Service (Garantie / Firmware-Support)', nameEn: 'Service (Warranty & Firmware Support)', weight: 20, valA: 5, valB: 3, valC: 5, valD: 4 }
+    ],
+    decisionDe: 'Entscheidung Switch: Option A (Netgear GS752TP-200AJS) gewinnt knapp (4.20 Punkte) dank des hervorragenden Verhältnisses aus hohem PoE-Budget (380W), lebenslanger Garantie (Service) und fairem Anschaffungspreis.',
+    decisionEn: 'Switch Decision: Option A (Netgear GS752TP-200AJS) wins (4.20 points) thanks to its excellent combination of high PoE budget (380W), lifetime warranty, and competitive price.',
+    selectedOptionId: 'opt-a'
+  },
+  {
+    id: 'nwa-notebooks',
+    titleDe: '2. Nutzwertanalyse: IT-Arbeitsplatz Notebooks',
+    titleEn: '2. Utility Analysis: IT Workstation Notebooks',
+    options: [
+      { id: 'opt-a', labelDe: 'Option A', labelEn: 'Option A', name: 'Lenovo V15 G4 AMN', desc: 'Athlon Silver 7120U, 8GB RAM, 256GB SSD' },
+      { id: 'opt-b', labelDe: 'Option B', labelEn: 'Option B', name: 'HP 255 G10', desc: 'AMD Ryzen 3 7320U, 8GB RAM, 512GB SSD' },
+      { id: 'opt-c', labelDe: 'Option C', labelEn: 'Option C', name: 'Dell Vostro 3520', desc: 'Intel Core i3-1215U, 8GB RAM, 256GB SSD' },
+      { id: 'opt-d', labelDe: 'Option D', labelEn: 'Option D', name: 'Acer Extensa 15', desc: 'Intel N100, 8GB RAM, 256GB SSD' }
+    ],
+    criteria: [
+      { id: 'c1', nameDe: 'Preis (Sehr budgetsensibel)', nameEn: 'Price (Highly Budget Sensitive)', weight: 20, valA: 5, valB: 4, valC: 3, valD: 5 },
+      { id: 'c2', nameDe: 'Leistung (CPU-Performance für Schulungen)', nameEn: 'Performance (CPU for Training Labs)', weight: 25, valA: 2, valB: 4, valC: 5, valD: 2 },
+      { id: 'c3', nameDe: 'Energieverbrauch (Akkulaufzeit & TDP)', nameEn: 'Energy Consumption (Battery Life & TDP)', weight: 15, valA: 5, valB: 4, valC: 3, valD: 5 },
+      { id: 'c4', nameDe: 'Nachhaltigkeit (EPEAT/TCO-Zertifizierung)', nameEn: 'Sustainability (EPEAT/TCO Certification)', weight: 20, valA: 3, valB: 4, valC: 4, valD: 3 },
+      { id: 'c5', nameDe: 'Service (Business-Support für 60 Geräte)', nameEn: 'Service (Business Support for 60 Units)', weight: 20, valA: 4, valB: 4, valC: 5, valD: 3 }
+    ],
+    decisionDe: 'Entscheidung Notebook: Option C (Dell Vostro 3520, 4.10 Punkte) und Option B (HP 255 G10, 4.00 Punkte) erzielen in der vergleichenden Nutzwertanalyse die besten Gesamtergebnisse. Für schaltungsintensive IT-Schulungsumgebungen bieten das HP 255 G10 sowie das Dell Vostro 3520 das beste Verhältnis aus moderner Quad-Core-Performance und wirtschaftlicher Effizienz.',
+    decisionEn: 'Notebook Decision: Option C (Dell Vostro 3520, 4.10 pts) and Option B (HP 255 G10, 4.00 pts) achieve the top scores. For IT training environments, HP 255 G10 and Dell Vostro 3520 offer the best balance of multi-core CPU power and commercial efficiency.',
+    selectedOptionId: 'opt-c'
+  },
+  {
+    id: 'nwa-monitors',
+    titleDe: '3. Nutzwertanalyse: 27" Schulungs-Monitore',
+    titleEn: '3. Utility Analysis: 27" Training Monitors',
+    options: [
+      { id: 'opt-a', labelDe: 'Option A', labelEn: 'Option A', name: 'Dell Pro E2723HM / E2725HM', desc: 'Full HD IPS, HDMI/DP, 100Hz' },
+      { id: 'opt-b', labelDe: 'Option B', labelEn: 'Option B', name: 'iiyama ProLite XU2793HS', desc: 'Full HD IPS, HDMI/DP, sehr dünner Rahmen' },
+      { id: 'opt-c', labelDe: 'Option C', labelEn: 'Option C', name: 'HP P27h G5', desc: 'Full HD IPS, höhenverstellbar mit integrierten Lautsprechern' },
+      { id: 'opt-d', labelDe: 'Option D', labelEn: 'Option D', name: 'Samsung Essential Monitor S3 S31C', desc: 'Full HD IPS, Budget-Option' }
+    ],
+    criteria: [
+      { id: 'c1', nameDe: 'Preis (Projektpreis bei 60 Stück)', nameEn: 'Price (Project Rate for 60 Units)', weight: 20, valA: 4, valB: 4, valC: 3, valD: 5 },
+      { id: 'c2', nameDe: 'Leistung (Panel-Qualität, Anschlüsse, Ergonomie)', nameEn: 'Performance (Panel Quality, Ports, Ergonomics)', weight: 25, valA: 4, valB: 4, valC: 5, valD: 3 },
+      { id: 'c3', nameDe: 'Energieverbrauch (Betriebs-Leistungsaufnahme)', nameEn: 'Energy Consumption (Operating Wattage)', weight: 15, valA: 5, valB: 4, valC: 4, valD: 4 },
+      { id: 'c4', nameDe: 'Nachhaltigkeit (Recyclinganteil/Verpackung)', nameEn: 'Sustainability (Recycled Content/Packaging)', weight: 20, valA: 5, valB: 3, valC: 4, valD: 3 },
+      { id: 'c5', nameDe: 'Service (Austauschservice im Defektfall)', nameEn: 'Service (On-site Replacement Service)', weight: 20, valA: 5, valB: 4, valC: 4, valD: 3 }
+    ],
+    decisionDe: 'Entscheidung Monitor: Option A (Dell Pro E2723HM / E2725HM) gewinnt deutlich mit 4.55 Punkten. Dell glänzt mit extrem hoher Energieeffizienz (~15W im Betrieb), vorbildlicher Nachhaltigkeit (hoher Recyclinganteil) und unkompliziertem Vor-Ort-Austauschservice.',
+    decisionEn: 'Monitor Decision: Option A (Dell Pro E2723HM / E2725HM) wins convincingly with 4.55 points. Dell excels in energy efficiency (~15W), high recycled content, and reliable business replacement service.',
+    selectedOptionId: 'opt-a'
+  }
+];
 
 // ==========================================
 // 2. DICTIONARY FOR TRANSLATION (DE & EN)
@@ -345,7 +401,11 @@ const translations = {
     tab_faq: 'Fragenkatalog',
     tab_nwa: 'Nutzwertanalyse',
     tab_bab: 'BAB-Rechner',
+    tab_docs: 'Dokumente',
     pane_status_title: 'Phasenfortschritt (Vollständige Handlung)',
+    pane_docs_title: 'Kunden-Dokumente & Projekt-Unterlagen',
+    pane_docs_desc: 'Hier stehen Ihnen alle 4 wesentlichen Projektdokumente der PJM IT-Solutions GmbH zur Einsicht und zum offiziellen PDF-Download bereit.',
+    btn_export_all_docs: 'Alle 4 Dokumente als PDF',
     pane_team_title: 'Organigramm',
     pane_team_desc: 'Unser 5-köpfiges Team der PJM IT-Solutions GmbH arbeitet dezentral in ganz Deutschland. Hier sehen Sie unsere Rollenverteilung und Zuständigkeiten für das Projekt.',
     pane_faq_title: 'Projekt-Fragenkatalog',
@@ -445,7 +505,11 @@ const translations = {
     tab_faq: 'Questions Catalog',
     tab_nwa: 'Utility Analysis',
     tab_bab: 'BAB Calculator',
+    tab_docs: 'Documents',
     pane_status_title: 'Phase Progress (Complete Action)',
+    pane_docs_title: 'Customer Documents & Project Files',
+    pane_docs_desc: 'Official project documentation from PJM IT-Solutions GmbH available for viewing and PDF download.',
+    btn_export_all_docs: 'All 4 Documents as PDF',
     pane_team_title: 'Org Chart',
     pane_team_desc: 'Our 5-member team at PJM IT-Solutions GmbH works remotely across Germany. Here you can see our distribution of roles and responsibilities for the project.',
     pane_faq_title: 'Project Q&A Catalog',
@@ -546,7 +610,8 @@ function setLocalStorage(key, value) {
 let currentLanguage = getLocalStorage('pjm_lang', 'de');
 let phasesData = getLocalStorage('pjm_phases', defaultPhases);
 let questionsData = getLocalStorage('pjm_questions', defaultQuestions);
-let nwaData = getLocalStorage('pjm_nwa', defaultNwa);
+let nwaCategoriesData = getLocalStorage('pjm_nwa_v3', defaultNwaCategories);
+let activeNwaCategory = '0';
 
 // ==========================================
 // 4. NAVIGATION & TAB SWITCHER
@@ -572,7 +637,7 @@ function initNavigation() {
       sectionProject.classList.add('active');
       // Trigger animations inside the sub-tabs
       calculateBAB();
-      calculateNWA();
+      renderNWA();
     }
   }
 
@@ -600,7 +665,9 @@ function initNavigation() {
       if (targetPaneId === 'pane-bab') {
         calculateBAB();
       } else if (targetPaneId === 'pane-nwa') {
-        calculateNWA();
+        renderNWA();
+      } else if (targetPaneId === 'pane-docs') {
+        renderDocs();
       }
     });
   });
@@ -649,6 +716,7 @@ function updateLanguageUI() {
   renderFaq();
   calculateNWA();
   calculateBAB();
+  renderDocs();
   updateGlobalStats();
 }
 
@@ -1133,136 +1201,286 @@ function initFaqControls() {
 // ==========================================
 // 9. DYNAMIC CALCULATIONS: NUTZWERTANALYSE
 // ==========================================
-function calculateNWA() {
-  const dict = translations[currentLanguage];
-  const container = document.getElementById('nwa-rows-container');
+function renderNWA() {
+  const container = document.getElementById('nwa-categories-render-container');
+  if (!container) return;
   container.innerHTML = '';
 
-  let totalWeight = 0;
-  let totalScore1 = 0;
-  let totalScore2 = 0;
-  let totalScore3 = 0;
+  const isAll = activeNwaCategory === 'all';
+  const categoriesToRender = isAll
+    ? nwaCategoriesData
+    : [nwaCategoriesData[parseInt(activeNwaCategory)] || nwaCategoriesData[0]];
 
-  nwaData.criteria.forEach((crit, index) => {
-    totalWeight += crit.weight;
+  categoriesToRender.forEach((cat, catIndexInRender) => {
+    const realIndex = isAll ? catIndexInRender : (parseInt(activeNwaCategory) || 0);
+    const title = currentLanguage === 'de' ? cat.titleDe : cat.titleEn;
+    const decision = currentLanguage === 'de' ? cat.decisionDe : cat.decisionEn;
 
-    const critName = currentLanguage === 'de' ? crit.nameDe : crit.nameEn;
+    let totalWeight = 0;
+    let sumA = 0, sumB = 0, sumC = 0, sumD = 0;
 
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${critName}</td>
-      <td style="text-align: center;">
-        <input type="number" class="nwa-weight-input" data-crit-index="${index}" value="${crit.weight}" min="0" max="100">%
-      </td>
-      <td>
-        <div class="nwa-slider-container">
-          <input type="range" class="nwa-opt1-slider" data-crit-index="${index}" min="1" max="10" value="${crit.val1}">
-          <span class="nwa-slider-val">${crit.val1}</span>
+    cat.criteria.forEach(crit => {
+      totalWeight += crit.weight;
+      sumA += (crit.valA * (crit.weight / 100));
+      sumB += (crit.valB * (crit.weight / 100));
+      sumC += (crit.valC * (crit.weight / 100));
+      sumD += (crit.valD * (crit.weight / 100));
+    });
+
+    const card = document.createElement('div');
+    card.className = 'glass-card nwa-category-card';
+    card.style.marginBottom = '2rem';
+    card.style.padding = '1.5rem';
+
+    // Header & Options Summary Bar
+    let optionsHeaderHtml = '';
+    cat.options.forEach((opt) => {
+      const optLabel = currentLanguage === 'de' ? opt.labelDe : opt.labelEn;
+      
+      optionsHeaderHtml += `
+        <th style="text-align: center; vertical-align: top; padding: 0.6rem 0.4rem;">
+          <div style="font-weight: 800; color: #fff; font-size: 0.88rem;">${optLabel}</div>
+          <div style="font-size: 0.82rem; color: var(--color-primary); font-weight: 700; margin-top: 0.15rem;">${opt.name}</div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 400; line-height: 1.2; margin-top: 0.15rem;">${opt.desc}</div>
+        </th>
+      `;
+    });
+
+    // Rows for criteria
+    let rowsHtml = '';
+    cat.criteria.forEach((crit, critIdx) => {
+      const critName = currentLanguage === 'de' ? crit.nameDe : crit.nameEn;
+
+      rowsHtml += `
+        <tr>
+          <td style="font-weight: 600;">${critName}</td>
+          <td style="text-align: center;">
+            <input type="number" class="nwa-weight-input" data-cat="${realIndex}" data-crit="${critIdx}" value="${crit.weight}" min="0" max="100">%
+          </td>
+          <td>
+            <div class="nwa-slider-container">
+              <input type="range" class="nwa-val-slider" data-cat="${realIndex}" data-crit="${critIdx}" data-opt="valA" min="1" max="5" value="${crit.valA}">
+              <span class="nwa-slider-val">${crit.valA}</span>
+            </div>
+          </td>
+          <td>
+            <div class="nwa-slider-container">
+              <input type="range" class="nwa-val-slider" data-cat="${realIndex}" data-crit="${critIdx}" data-opt="valB" min="1" max="5" value="${crit.valB}">
+              <span class="nwa-slider-val">${crit.valB}</span>
+            </div>
+          </td>
+          <td>
+            <div class="nwa-slider-container">
+              <input type="range" class="nwa-val-slider" data-cat="${realIndex}" data-crit="${critIdx}" data-opt="valC" min="1" max="5" value="${crit.valC}">
+              <span class="nwa-slider-val">${crit.valC}</span>
+            </div>
+          </td>
+          <td>
+            <div class="nwa-slider-container">
+              <input type="range" class="nwa-val-slider" data-cat="${realIndex}" data-crit="${critIdx}" data-opt="valD" min="1" max="5" value="${crit.valD}">
+              <span class="nwa-slider-val">${crit.valD}</span>
+            </div>
+          </td>
+        </tr>
+      `;
+    });
+
+    const scoreA = sumA.toFixed(2);
+    const scoreB = sumB.toFixed(2);
+    const scoreC = sumC.toFixed(2);
+    const scoreD = sumD.toFixed(2);
+
+    card.innerHTML = `
+      <h3 class="margin-bottom-sm text-gradient" style="font-size: 1.25rem;">${title}</h3>
+      
+      <div class="nwa-table-wrapper">
+        <table class="nwa-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">Bewertungskriterium</th>
+              <th style="width: 10%; text-align: center;">Gew.</th>
+              ${optionsHeaderHtml}
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+            <tr class="nwa-total-row">
+              <td><strong>Gesamtwert (Nutzwert)</strong></td>
+              <td style="text-align: center;"><strong>${totalWeight}%</strong></td>
+              <td class="nwa-score-cell" style="text-align: center; font-size: 1.1rem;"><strong>${scoreA}</strong></td>
+              <td class="nwa-score-cell" style="text-align: center; font-size: 1.1rem;"><strong>${scoreB}</strong></td>
+              <td class="nwa-score-cell" style="text-align: center; font-size: 1.1rem;"><strong>${scoreC}</strong></td>
+              <td class="nwa-score-cell" style="text-align: center; font-size: 1.1rem;"><strong>${scoreD}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="nwa-winner-alert" style="margin-top: 1rem; padding: 1rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <div>
+          <strong style="color: #fff; font-size: 0.95rem;">Ergebnis & Fazit:</strong>
+          <p style="margin-top: 0.25rem; font-size: 0.9rem; line-height: 1.45; color: #a7f3d0;">${decision}</p>
         </div>
-      </td>
-      <td>
-        <div class="nwa-slider-container">
-          <input type="range" class="nwa-opt2-slider" data-crit-index="${index}" min="1" max="10" value="${crit.val2}">
-          <span class="nwa-slider-val">${crit.val2}</span>
-        </div>
-      </td>
-      <td>
-        <div class="nwa-slider-container">
-          <input type="range" class="nwa-opt3-slider" data-crit-index="${index}" min="1" max="10" value="${crit.val3}">
-          <span class="nwa-slider-val">${crit.val3}</span>
-        </div>
-      </td>
+      </div>
     `;
 
-    // Sliders event handling
-    const slider1 = row.querySelector('.nwa-opt1-slider');
-    const slider2 = row.querySelector('.nwa-opt2-slider');
-    const slider3 = row.querySelector('.nwa-opt3-slider');
-    const weightInput = row.querySelector('.nwa-weight-input');
-
-    slider1.addEventListener('input', (e) => {
-      crit.val1 = parseInt(e.target.value);
-      row.querySelector('.nwa-opt1-slider + .nwa-slider-val').textContent = crit.val1;
-      setLocalStorage('pjm_nwa', nwaData);
-      updateNWATotals();
-    });
-
-    slider2.addEventListener('input', (e) => {
-      crit.val2 = parseInt(e.target.value);
-      row.querySelector('.nwa-opt2-slider + .nwa-slider-val').textContent = crit.val2;
-      setLocalStorage('pjm_nwa', nwaData);
-      updateNWATotals();
-    });
-
-    slider3.addEventListener('input', (e) => {
-      crit.val3 = parseInt(e.target.value);
-      row.querySelector('.nwa-opt3-slider + .nwa-slider-val').textContent = crit.val3;
-      setLocalStorage('pjm_nwa', nwaData);
-      updateNWATotals();
-    });
-
-    weightInput.addEventListener('change', (e) => {
-      crit.weight = parseInt(e.target.value) || 0;
-      setLocalStorage('pjm_nwa', nwaData);
-      updateNWATotals();
-    });
-
-    container.appendChild(row);
+    container.appendChild(card);
   });
 
-  // Append Total Row
-  const totalRow = document.createElement('tr');
-  totalRow.className = 'nwa-total-row';
-  totalRow.innerHTML = `
-    <td><strong>Gesamt / Total</strong></td>
-    <td style="text-align: center;" id="nwa-total-weight">${totalWeight}%</td>
-    <td class="nwa-score-cell" id="nwa-total-opt1">0.0</td>
-    <td class="nwa-score-cell" id="nwa-total-opt2">0.0</td>
-    <td class="nwa-score-cell" id="nwa-total-opt3">0.0</td>
-  `;
-  container.appendChild(totalRow);
+  // Event handlers
+  container.querySelectorAll('.nwa-weight-input').forEach(input => {
+    input.addEventListener('change', (e) => {
+      const catIdx = parseInt(e.target.getAttribute('data-cat'));
+      const critIdx = parseInt(e.target.getAttribute('data-crit'));
+      const newWeight = parseInt(e.target.value) || 0;
+      nwaCategoriesData[catIdx].criteria[critIdx].weight = newWeight;
+      setLocalStorage('pjm_nwa_v3', nwaCategoriesData);
+      renderNWA();
+    });
+  });
 
-  // Initial calculation
-  updateNWATotals();
+  container.querySelectorAll('.nwa-val-slider').forEach(slider => {
+    slider.addEventListener('input', (e) => {
+      const catIdx = parseInt(e.target.getAttribute('data-cat'));
+      const critIdx = parseInt(e.target.getAttribute('data-crit'));
+      const optKey = e.target.getAttribute('data-opt');
+      const newVal = parseInt(e.target.value) || 1;
+      nwaCategoriesData[catIdx].criteria[critIdx][optKey] = newVal;
+      setLocalStorage('pjm_nwa_v3', nwaCategoriesData);
+      renderNWA();
+    });
+  });
 }
 
-function updateNWATotals() {
-  const dict = translations[currentLanguage];
-  let totalWeight = 0;
-  let weightedSum1 = 0;
-  let weightedSum2 = 0;
-  let weightedSum3 = 0;
+function calculateNWA() {
+  renderNWA();
+}
 
-  nwaData.criteria.forEach(crit => {
-    totalWeight += crit.weight;
-    weightedSum1 += (crit.weight * crit.val1);
-    weightedSum2 += (crit.weight * crit.val2);
-    weightedSum3 += (crit.weight * crit.val3);
+function initNwaControls() {
+  const catBtns = document.querySelectorAll('.nwa-cat-btn');
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeNwaCategory = btn.getAttribute('data-nwa-cat');
+      renderNWA();
+    });
   });
 
-  // Display weights
-  document.getElementById('nwa-total-weight').textContent = totalWeight + '%';
+  const btnExportNwa = document.getElementById('btn-export-nwa-pdf');
+  if (btnExportNwa) {
+    btnExportNwa.addEventListener('click', (e) => {
+      e.preventDefault();
+      exportNwaPdf();
+    });
+  }
+}
 
-  // Normalize scores (divide by total weight)
-  const normScore1 = totalWeight > 0 ? (weightedSum1 / totalWeight).toFixed(1) : '0.0';
-  const normScore2 = totalWeight > 0 ? (weightedSum2 / totalWeight).toFixed(1) : '0.0';
-  const normScore3 = totalWeight > 0 ? (weightedSum3 / totalWeight).toFixed(1) : '0.0';
+function exportNwaPdf() {
+  const printWindow = window.open('', '_blank');
+  
+  let catsHtml = '';
+  nwaCategoriesData.forEach((cat) => {
+    const title = currentLanguage === 'de' ? cat.titleDe : cat.titleEn;
+    const decision = currentLanguage === 'de' ? cat.decisionDe : cat.decisionEn;
 
-  document.getElementById('nwa-total-opt1').textContent = normScore1;
-  document.getElementById('nwa-total-opt2').textContent = normScore2;
-  document.getElementById('nwa-total-opt3').textContent = normScore3;
+    let optionsThHtml = '';
+    cat.options.forEach(opt => {
+      const label = currentLanguage === 'de' ? opt.labelDe : opt.labelEn;
+      optionsThHtml += `<th style="text-align:center">${label}<br><small style="font-weight:normal">${opt.name}</small></th>`;
+    });
 
-  // Decide winner
-  const scores = [
-    { name: dict.nwa_th_opt1, val: parseFloat(normScore1) },
-    { name: dict.nwa_th_opt2, val: parseFloat(normScore2) },
-    { name: dict.nwa_th_opt3, val: parseFloat(normScore3) }
-  ];
+    let totalWeight = 0;
+    let sumA = 0, sumB = 0, sumC = 0, sumD = 0;
 
-  scores.sort((a, b) => b.val - a.val);
-  const winner = scores[0];
+    let rowsHtml = '';
+    cat.criteria.forEach(crit => {
+      totalWeight += crit.weight;
+      const critName = currentLanguage === 'de' ? crit.nameDe : crit.nameEn;
+      const wA = (crit.valA * (crit.weight / 100)).toFixed(2);
+      const wB = (crit.valB * (crit.weight / 100)).toFixed(2);
+      const wC = (crit.valC * (crit.weight / 100)).toFixed(2);
+      const wD = (crit.valD * (crit.weight / 100)).toFixed(2);
 
-  document.getElementById('nwa-recommendation-text').textContent = ` ${winner.name} ${dict.winner_suffix} ${winner.val.toFixed(1)} / 10`;
+      sumA += parseFloat(wA);
+      sumB += parseFloat(wB);
+      sumC += parseFloat(wC);
+      sumD += parseFloat(wD);
+
+      rowsHtml += `
+        <tr>
+          <td>${critName}</td>
+          <td style="text-align:center">${crit.weight}%</td>
+          <td style="text-align:center">${crit.valA}</td>
+          <td style="text-align:center">${crit.valB}</td>
+          <td style="text-align:center">${crit.valC}</td>
+          <td style="text-align:center">${crit.valD}</td>
+        </tr>
+      `;
+    });
+
+    catsHtml += `
+      <div class="pdf-nwa-sec">
+        <h2>${title}</h2>
+        <table class="pdf-table">
+          <thead>
+            <tr>
+              <th>Bewertungskriterium</th>
+              <th style="text-align:center">Gewichtung</th>
+              ${optionsThHtml}
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+            <tr class="pdf-total-row">
+              <td><strong>Gesamtwert (Nutzwert)</strong></td>
+              <td style="text-align:center"><strong>${totalWeight}%</strong></td>
+              <td style="text-align:center"><strong>${sumA.toFixed(2)}</strong></td>
+              <td style="text-align:center"><strong>${sumB.toFixed(2)}</strong></td>
+              <td style="text-align:center"><strong>${sumC.toFixed(2)}</strong></td>
+              <td style="text-align:center"><strong>${sumD.toFixed(2)}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pdf-decision-box">
+          <strong>Entscheidung & Begründung:</strong>
+          <p style="margin-top:0.25rem;">${decision}</p>
+        </div>
+      </div>
+    `;
+  });
+
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>Nutzwertanalysen - PJM IT-Solutions GmbH</title>
+        <style>
+          body { font-family: 'Plus Jakarta Sans', sans-serif; color: #1e293b; padding: 2rem; background: #fff; }
+          h1 { font-family: 'Outfit', sans-serif; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+          h2 { font-family: 'Outfit', sans-serif; color: #0284c7; margin-top: 2rem; font-size: 1.25rem; }
+          .pdf-nwa-sec { margin-bottom: 2.5rem; page-break-inside: avoid; }
+          .pdf-table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.85rem; }
+          .pdf-table th, .pdf-table td { padding: 0.6rem 0.75rem; border: 1px solid #cbd5e1; }
+          .pdf-table th { background: #f1f5f9; color: #0f172a; font-weight: 700; text-align: left; }
+          .pdf-total-row td { background: #e2e8f0; font-weight: 800; font-size: 0.95rem; }
+          .pdf-decision-box { margin-top: 1rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem; color: #166534; font-size: 0.9rem; }
+        </style>
+      </head>
+      <body>
+        <h1>PJM IT-Solutions GmbH - Hardware Nutzwertanalysen</h1>
+        <p style="font-size:0.9rem; color:#64748b; margin-bottom: 1.5rem;">Generiert am: ${new Date().toLocaleDateString('de-DE')}</p>
+        ${catsHtml}
+        <script>
+          window.onload = function() {
+            window.print();
+            setTimeout(function() { window.close(); }, 500);
+          };
+        </script>
+      </body>
+    </html>
+  `);
+  printWindow.document.close();
 }
 
 // ==========================================
@@ -1402,6 +1620,373 @@ function updateGlobalStats() {
 }
 
 // ==========================================
+// 11. CUSTOMER DOCUMENTS & DOWNLOADS
+// ==========================================
+const defaultDocs = [
+  {
+    id: 'doc-lastenheft',
+    num: '01',
+    titleDe: '1. Lastenheft (Anforderungsspezifikation)',
+    titleEn: '1. Requirement Specification (Lastenheft)',
+    subDe: 'Erfassung aller Kundenanforderungen & Ergonomie-Vorgaben',
+    subEn: 'Assessment of all customer requirements & ergonomics',
+    author: 'Joshlyn (Projektleitung)',
+    date: '15.07.2026',
+    status: 'Freigegeben',
+    badgeClass: 'status-resolved',
+    fileSize: '1.4 MB PDF',
+    icon: '📄',
+    summaryDe: 'Das Lastenheft definiert alle funktionalen, ergonomischen und rechtlichen Vorgaben nach ArbStättV und DIN EN ISO 9241 für den Kunden-Arbeitsplatz.',
+    summaryEn: 'Defines all functional, ergonomic, and legal workplace requirements according to ArbStättV and DIN EN ISO 9241.',
+    bodyDe: `
+      <div class="doc-pdf-header">
+        <h3>PJM IT-Solutions GmbH – Lastenheft</h3>
+        <p><strong>Projekt:</strong> Einrichtung eines modernen IT-Arbeitsplatzes | <strong>Version:</strong> 1.0 (Freigegeben)</p>
+      </div>
+      <hr style="border-color: var(--border-color); margin: 1rem 0;">
+      <h4>1. Zielsetzung & Projektumfang</h4>
+      <p>Aufbau eines ergonomischen, energieeffizienten und zukunftssicheren IT-Arbeitsplatzes für den Auftraggeber im Homeoffice/Schulungsbetrieb.</p>
+      <h4>2. Fachliche & Technische Anforderungen</h4>
+      <ul>
+        <li><strong>Anzeige:</strong> 27"-IPS-Monitor mit HDMI/DP, Höhenverstellung, Neigung & geringem Verbrauch (~15W).</li>
+        <li><strong>Rechner:</strong> Schulungs-Notebook / Workstation mit mindestens Quad-Core CPU, 8 GB+ RAM, SSD.</li>
+        <li><strong>Netzwerk:</strong> Anbindung an 48-Port PoE+ Managed Gigabit Switch mit SFP-Fiber-Uplink.</li>
+        <li><strong>Arbeitsschutz:</strong> Einhaltung der Arbeitsstättenverordnung (ArbStättV) und DGUV V3 Prüfstandards.</li>
+      </ul>
+      <h4>3. Qualitäts- & Abnahmekriterien</h4>
+      <p>Mängelfreie Montage, vollständige Dokumentation, Stresstest aller Komponenten und Kundenübergabeprotokoll.</p>
+    `
+  },
+  {
+    id: 'doc-pflichtenheft',
+    num: '02',
+    titleDe: '2. Pflichtenheft (Technische Umsetzung)',
+    titleEn: '2. System Specification (Pflichtenheft)',
+    subDe: 'Detaillierte technische Realisierung, Staging & Rollout',
+    subEn: 'Detailed technical implementation, staging & rollout',
+    author: 'Siddharth & Murat (Engineering)',
+    date: '18.07.2026',
+    status: 'Freigegeben',
+    badgeClass: 'status-resolved',
+    fileSize: '2.1 MB PDF',
+    icon: '📋',
+    summaryDe: 'Konkrete technische Spezifikation des Netzwerks (VLAN, PoE+), Staging-Prozesse für Notebooks, Kabelmanagement und Sicherheitsprüfungen.',
+    summaryEn: 'Concrete technical specification of network, staging process for laptops, cable management, and safety audits.',
+    bodyDe: `
+      <div class="doc-pdf-header">
+        <h3>PJM IT-Solutions GmbH – Pflichtenheft</h3>
+        <p><strong>Projekt:</strong> Technische Umsetzung & Staging | <strong>Version:</strong> 1.0 (Freigegeben)</p>
+      </div>
+      <hr style="border-color: var(--border-color); margin: 1rem 0;">
+      <h4>1. Systemarchitektur & Hardwarekonfiguration</h4>
+      <p>Implementierung des Netgear GS752TP-200AJS 48-Port PoE+ Switches (380W Budget) und Dell Pro E2723HM Monitoren.</p>
+      <h4>2. Rollout-, Staging- & Deployment-Prozess</h4>
+      <ul>
+        <li>Automatisiertes Staging der Notebooks (Betriebssystem, Sicherheitssoftware, Office-Suite).</li>
+        <li>Netzwerkkonfiguration: VLAN-Segmentierung für Schulungs- und Verwaltungstraffik.</li>
+        <li>Ergonomisches Kabelmanagement & DGUV V3 Sicherheitsprüfung.</li>
+      </ul>
+      <h4>3. Test- & Abnahmeplan</h4>
+      <p>Funktionsprüfung der PoE-Stromversorgung, Durchsatzmessung am SFP-Uplink und 24h-Dauerlauf-Test.</p>
+    `
+  },
+  {
+    id: 'doc-bab',
+    num: '03',
+    titleDe: '3. Betriebsabrechnungsbogen & Angebot',
+    titleEn: '3. Cost Allocation (BAB) & Commercial Offer',
+    subDe: 'Gemeinkostenkalkulation & 18 % Angebotspreisermittlung',
+    subEn: 'Overhead cost allocation & 18% offer price calculation',
+    author: 'Murat (Kaufmännischer Controller)',
+    date: '20.07.2026',
+    status: 'Freigegeben',
+    badgeClass: 'status-resolved',
+    fileSize: '1.8 MB PDF',
+    icon: '📊',
+    summaryDe: 'Vollständige kaufmännische Zuschlagskalkulation (Material 14.7 %, Fertigung 83.4 %, Verw. & Vertr. 26.3 %) und rechtssicheres Kundenangebot mit 18 % Gewinnzuschlag.',
+    summaryEn: 'Complete commercial overhead allocation and legally binding customer offer with an 18% profit margin.',
+    bodyDe: `
+      <div class="doc-pdf-header">
+        <h3>PJM IT-Solutions GmbH – BAB & Angebotskalkulation</h3>
+        <p><strong>Projekt:</strong> Kaufmännische Abwicklung | <strong>Version:</strong> 1.0 (Freigegeben)</p>
+      </div>
+      <hr style="border-color: var(--border-color); margin: 1rem 0;">
+      <h4>1. Zuschlagsermittlung im Betriebsabrechnungsbogen (BAB)</h4>
+      <p><strong>Materialgemeinkostensatz:</strong> 14,7 % | <strong>Fertigungsgemeinkostensatz:</strong> 83,4 %<br>
+      <strong>Verwaltungs- & Vertriebsgemeinkostensatz:</strong> 26,3 % (bezogen auf HK des Umsatzes)</p>
+      <h4>2. Angebotsschema</h4>
+      <ul>
+        <li>Material-Einzelkosten + Materialgemeinkosten = Materialkosten</li>
+        <li>Fertigungslohn + Fertigungsgemeinkosten = Fertigungskosten</li>
+        <li><strong>Herstellkosten (HK)</strong> -> + Verw.-/Vertr.-Gemeinkosten = <strong>Selbstkosten (SK)</strong></li>
+        <li><strong>+ 18,0 % Gewinnzuschlag</strong> = Netto-Verkaufspreisangebot.</li>
+      </ul>
+    `
+  },
+  {
+    id: 'doc-nwa',
+    num: '04',
+    titleDe: '4. Hardware-Nutzwertanalyse & Übergabe',
+    titleEn: '4. Hardware Utility Analysis & Handover Protocol',
+    subDe: 'Wissenschaftlicher Nutzenvergleich & Formelles Übergabeprotokoll',
+    subEn: 'Utility evaluation of all devices & formal handover protocol',
+    author: 'PJM IT-Solutions GmbH',
+    date: '22.07.2026',
+    status: 'Freigegeben',
+    badgeClass: 'status-resolved',
+    fileSize: '2.5 MB PDF',
+    icon: '📈',
+    summaryDe: 'Nutzen-Kosten-Bewertung für Switches, Notebooks und Monitore sowie das finale Abnahme- und Übergabeprotokoll für unsere Dozentin Frau Petra.',
+    summaryEn: 'Multi-criteria evaluation for switches, laptops, and monitors, plus the final handover protocol for Frau Petra.',
+    bodyDe: `
+      <div class="doc-pdf-header">
+        <h3>PJM IT-Solutions GmbH – Nutzwertanalyse & Übergabe</h3>
+        <p><strong>Projekt:</strong> Hardware-Evaluierung & Projektabnahme | <strong>Version:</strong> 1.0 (Freigegeben)</p>
+      </div>
+      <hr style="border-color: var(--border-color); margin: 1rem 0;">
+      <h4>1. Zusammenfassung Nutzwertanalysen</h4>
+      <p>• <strong>48-Port PoE+ Switches:</strong> Netgear GS752TP-200AJS (4.20 Punkte) gewinnt dank 380W PoE & Service.<br>
+      • <strong>IT-Notebooks:</strong> Dell Vostro 3520 (4.10 Pkt.) & HP 255 G10 (4.00 Pkt.) führend bei Quad-Core CPU-Leistung.<br>
+      • <strong>27"-Monitore:</strong> Dell Pro E2723HM (4.55 Punkte) siegt bei Energieeffizienz (~15W) & Vor-Ort-Austauschservice.</p>
+      <h4>2. Formelles Übergabeprotokoll</h4>
+      <p>Mängelfreie Abnahme aller 6 Phasen des Projekts (Informieren, Planen, Entscheiden, Ausführen, Kontrollieren, Bewerten) zur Übergabe an Frau Petra.</p>
+    `
+  }
+];
+
+function renderDocs() {
+  const container = document.getElementById('docs-grid-container');
+  if (!container) return;
+  container.innerHTML = '';
+
+  defaultDocs.forEach(doc => {
+    const title = currentLanguage === 'de' ? doc.titleDe : doc.titleEn;
+    const sub = currentLanguage === 'de' ? doc.subDe : doc.subEn;
+    const summary = currentLanguage === 'de' ? doc.summaryDe : doc.summaryEn;
+
+    const card = document.createElement('div');
+    card.className = 'glass-card doc-card';
+    card.style.padding = '1.5rem';
+    card.style.display = 'flex';
+    card.style.flexDirection = 'column';
+    card.style.justifyContent = 'space-between';
+
+    card.innerHTML = `
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">${doc.icon}</span>
+            <span class="badge" style="background: rgba(0, 242, 254, 0.12); color: var(--color-primary); font-weight: 800; margin:0;">DOC ${doc.num}</span>
+          </div>
+          <span class="faq-status ${doc.badgeClass}">${doc.status}</span>
+        </div>
+        
+        <h3 style="font-size: 1.15rem; color: #fff; margin-bottom: 0.35rem;">${title}</h3>
+        <p style="font-size: 0.85rem; color: var(--color-primary); margin-bottom: 0.75rem; font-weight: 600;">${sub}</p>
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem;">${summary}</p>
+      </div>
+
+      <div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-bottom: 1rem;">
+          <span>👤 ${doc.author}</span>
+          <span>💾 ${doc.fileSize}</span>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="faq-btn btn-view-doc" data-doc-id="${doc.id}" style="flex: 1; padding: 0.5rem; text-align: center;">👁️ Ansehen</button>
+          <button class="faq-btn btn-download-doc" data-doc-id="${doc.id}" style="flex: 1; padding: 0.5rem; text-align: center; background: var(--color-accent-grad); color: var(--text-dark); border: none; font-weight: 700;">📥 PDF</button>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  container.querySelectorAll('.btn-view-doc').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const docId = btn.getAttribute('data-doc-id');
+      openDocModal(docId);
+    });
+  });
+
+  container.querySelectorAll('.btn-download-doc').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const docId = btn.getAttribute('data-doc-id');
+      downloadSingleDocPdf(docId);
+    });
+  });
+}
+
+let activeModalDocId = null;
+
+function openDocModal(docId) {
+  const doc = defaultDocs.find(d => d.id === docId);
+  if (!doc) return;
+  activeModalDocId = docId;
+
+  const modal = document.getElementById('doc-preview-modal');
+  const title = currentLanguage === 'de' ? doc.titleDe : doc.titleEn;
+  const bodyHtml = doc.bodyDe;
+
+  document.getElementById('modal-doc-title').textContent = title;
+  document.getElementById('modal-doc-body').innerHTML = bodyHtml;
+
+  if (modal.showModal) {
+    modal.showModal();
+  } else {
+    modal.setAttribute('open', 'true');
+  }
+}
+
+function initDocsControls() {
+  const btnClose = document.getElementById('btn-close-doc-modal');
+  const modal = document.getElementById('doc-preview-modal');
+
+  if (btnClose && modal) {
+    btnClose.addEventListener('click', () => {
+      if (modal.close) modal.close();
+      else modal.removeAttribute('open');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        if (modal.close) modal.close();
+        else modal.removeAttribute('open');
+      }
+    });
+  }
+
+  const btnModalPrint = document.getElementById('btn-modal-print-pdf');
+  if (btnModalPrint) {
+    btnModalPrint.addEventListener('click', () => {
+      if (activeModalDocId) downloadSingleDocPdf(activeModalDocId);
+    });
+  }
+
+  const btnDownloadAll = document.getElementById('btn-download-all-docs');
+  if (btnDownloadAll) {
+    btnDownloadAll.addEventListener('click', (e) => {
+      e.preventDefault();
+      downloadAllDocsPdf();
+    });
+  }
+}
+
+function downloadSingleDocPdf(docId) {
+  const doc = defaultDocs.find(d => d.id === docId);
+  if (!doc) return;
+
+  const title = currentLanguage === 'de' ? doc.titleDe : doc.titleEn;
+  const bodyHtml = doc.bodyDe;
+
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>${title} - PJM IT-Solutions GmbH</title>
+        <style>
+          body { font-family: 'Plus Jakarta Sans', sans-serif; color: #0f172a; padding: 2.5rem; background: #fff; line-height: 1.6; }
+          .pdf-header { border-bottom: 3px solid #0284c7; padding-bottom: 1rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-end; }
+          .brand { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; color: #0f172a; }
+          .doc-meta { font-size: 0.85rem; color: #64748b; text-align: right; }
+          h3 { font-family: 'Outfit', sans-serif; color: #0f172a; margin-top: 1rem; }
+          h4 { font-family: 'Outfit', sans-serif; color: #0284c7; margin-top: 1.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.25rem; }
+          ul { padding-left: 1.25rem; }
+          li { margin-bottom: 0.35rem; }
+          .pdf-footer { margin-top: 3rem; border-top: 1px solid #cbd5e1; padding-top: 1rem; font-size: 0.8rem; color: #64748b; text-align: center; }
+        </style>
+      </head>
+      <body>
+        <div class="pdf-header">
+          <div>
+            <div class="brand">PJM IT-Solutions GmbH</div>
+            <div style="font-size:0.9rem; color:#0284c7; font-weight:700;">Projekt-Dokumentation & Qualitätsnachweis</div>
+          </div>
+          <div class="doc-meta">
+            <strong>Erstellt am:</strong> ${doc.date}<br>
+            <strong>Verantwortlich:</strong> ${doc.author}<br>
+            <strong>Status:</strong> ${doc.status}
+          </div>
+        </div>
+        ${bodyHtml}
+        <div class="pdf-footer">
+          &copy; 2026 PJM IT-Solutions GmbH | Dokument ${doc.num} | Alle Rechte vorbehalten.
+        </div>
+        <script>
+          window.onload = function() {
+            window.print();
+            setTimeout(function() { window.close(); }, 500);
+          };
+        </script>
+      </body>
+    </html>
+  `);
+  printWindow.document.close();
+}
+
+function downloadAllDocsPdf() {
+  const printWindow = window.open('', '_blank');
+  
+  let docsHtml = '';
+  defaultDocs.forEach((doc, idx) => {
+    const title = currentLanguage === 'de' ? doc.titleDe : doc.titleEn;
+    docsHtml += `
+      <div class="pdf-doc-section" style="${idx > 0 ? 'page-break-before: always;' : ''}">
+        <div class="pdf-header">
+          <div>
+            <div class="brand">PJM IT-Solutions GmbH</div>
+            <div style="font-size:0.9rem; color:#0284c7; font-weight:700;">Gesamtdokumentation – Dok. ${doc.num} von 04</div>
+          </div>
+          <div class="doc-meta">
+            <strong>Erstellt am:</strong> ${doc.date}<br>
+            <strong>Verantwortlich:</strong> ${doc.author}
+          </div>
+        </div>
+        <h2>${title}</h2>
+        ${doc.bodyDe}
+      </div>
+    `;
+  });
+
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>Gesamtdokumentation - PJM IT-Solutions GmbH</title>
+        <style>
+          body { font-family: 'Plus Jakarta Sans', sans-serif; color: #0f172a; padding: 2.5rem; background: #fff; line-height: 1.6; }
+          .pdf-doc-section { margin-bottom: 3rem; }
+          .pdf-header { border-bottom: 3px solid #0284c7; padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+          .brand { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; color: #0f172a; }
+          .doc-meta { font-size: 0.85rem; color: #64748b; text-align: right; }
+          h2 { font-family: 'Outfit', sans-serif; color: #0284c7; font-size: 1.35rem; margin-top: 1rem; margin-bottom: 1rem; }
+          h3 { font-family: 'Outfit', sans-serif; color: #0f172a; margin-top: 0.75rem; }
+          h4 { font-family: 'Outfit', sans-serif; color: #0f172a; margin-top: 1.25rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.25rem; }
+          ul { padding-left: 1.25rem; }
+          li { margin-bottom: 0.35rem; }
+        </style>
+      </head>
+      <body>
+        <div style="text-align:center; padding: 3rem 0; border-bottom: 2px solid #e2e8f0; margin-bottom: 3rem;">
+          <h1 style="font-family:'Outfit', sans-serif; font-size: 2.5rem; color:#0f172a;">PJM IT-Solutions GmbH</h1>
+          <h3 style="color:#0284c7; font-weight:600;">Offizielle Projektdokumentation (4 Kern-Dokumente)</h3>
+          <p style="color:#64748b;">Projekt: Einrichtung eines modernen IT-Arbeitsplatzes | Dozentin: Frau Petra</p>
+        </div>
+        ${docsHtml}
+        <script>
+          window.onload = function() {
+            window.print();
+            setTimeout(function() { window.close(); }, 500);
+          };
+        </script>
+      </body>
+    </html>
+  `);
+  printWindow.document.close();
+}
+
+// ==========================================
 // 12. INITIALIZATION
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -1409,6 +1994,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguageSwitcher();
   initFaqControls();
   initBABControls();
+  initNwaControls();
+  initDocsControls();
+  renderDocs();
 
   // Handle Reset Data
   const btnReset = document.getElementById('btn-reset-data');

@@ -1,0 +1,41 @@
+<svg width="250" height="55" viewBox="0 0 250 55" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .brand-text { fill: #F8FAFC; font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 8.5px; font-weight: 700; letter-spacing: 0.4px; }
+    </style>
+    <filter id="logo-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Background rect -->
+  <rect class="bg" width="100%" height="100%" rx="6" />
+
+  <!-- Left circuit nodes for the 'p' -->
+  <g filter="url(#logo-glow)">
+    <circle cx="16" cy="25" r="3" fill="#00F2FE" />
+    <path d="M 16 25 L 35 25" stroke="#00F2FE" stroke-width="2" />
+    
+    <circle cx="24" cy="15" r="3" fill="#00F2FE" />
+    <path d="M 24 15 L 40 15" stroke="#00F2FE" stroke-width="2" />
+    
+    <circle cx="24" cy="35" r="3" fill="#00F2FE" />
+    <path d="M 24 35 L 40 35" stroke="#00F2FE" stroke-width="2" />
+  </g>
+
+  <!-- Stylized lowercase pjm using clean geometric stroke paths -->
+  <!-- p -->
+  <path d="M 45 42 L 45 18 C 45 13, 58 13, 58 22 C 58 31, 45 31, 45 31" fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- j -->
+  <path d="M 70 18 L 70 42 C 70 47, 65 52, 56 52" fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="70" cy="9" r="3" fill="#FFFFFF" />
+  <!-- m -->
+  <path d="M 82 42 L 82 18 C 82 13, 93 13, 93 22 L 93 42 M 93 18 C 93 13, 104 13, 104 22 L 104 42" fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- IT-Solutions GmbH -->
+  <text x="44" y="49" class="brand-text">IT-Solutions GmbH</text>
+</svg>
